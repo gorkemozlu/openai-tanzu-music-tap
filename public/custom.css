@@ -1,0 +1,156 @@
+.content-container {
+    display: flex;
+    justify-content: center;
+}
+
+#repo {
+    font-size: 60%;
+    color: gray;
+    text-align: center;
+}
+
+#powered-by {
+    margin-top: 0.8em;
+    margin-right: 1em;
+}
+
+#powered-by img {
+    margin-left: 0.1em;
+}
+
+.title {
+    margin-left: 5px;
+}
+
+#loading {
+    margin-left: 5px;
+    display: none;
+}
+
+.github-fork-ribbon.right-bottom:before {
+    background-color: #333;
+}
+
+input[type=text] {
+    padding: 0.5em;
+    width: 512px;
+    border: 1px solid gray;
+    border-radius: 8px;
+}
+
+input:disabled {
+    background: lightgray;
+    color: darkgray;
+}
+
+input[type=button] {
+    padding: 0.5em 1em;
+    margin: 0.5em;
+    border: 1px solid gray;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+#image {
+    display: none;
+    margin: 2em 0em;
+    border: 1px solid darkgray;
+    border-radius: 8px;
+}
+
+
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    margin: 20px;
+
+  }
+  
+  label {
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  label:hover {
+    background-color: #ddd;
+  }
+  
+  input[type="checkbox"] {
+    display: none;
+  }
+  
+  input[type="checkbox"] + label {
+    display: block;
+    padding: 5px 10px;
+    background-color: #eee;
+  }
+  
+  input[type="checkbox"]:checked + label,
+  input[type="checkbox"]:not(:checked):active + label {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  button {
+    background-color: #00648f;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 20px;
+  }
+  
+  button:hover {
+    background-color: #033f59;
+  }
+  
+
+  ul#recommendationz {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  li {
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  li:hover {
+    background-color: #ddd;
+  }
+  
+  li.selected {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .select-musicians {
+    width: 50%;
+  }
+  
+  .recommended-musicians {
+    width: 50%;
+  }

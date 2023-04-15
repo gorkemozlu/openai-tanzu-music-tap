@@ -1,0 +1,74 @@
+doctype html
+html
+  head
+    title Tanzu Music Recommendation
+    script(src="/socket.io/socket.io.js")
+    meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='/clr-ui.min.css')
+    link(href='/custom.css', rel='stylesheet')
+    link(rel='icon', href='/favicon.ico')
+.main-container
+  header.header-6
+    .branding
+      a.nav-link
+        span.title 🎧 Tanzu Music Recommendation 🎧
+        span#loading
+          img(src='/loading.gif', width='25', height='25')
+    .header-actions
+      #powered-by
+        | Powered by
+        img(width='145', height='38', src='/tap.png', alt='VMware Tanzu Application Platform')
+        img(width='100', height='25', src='/openai.png', alt='OpenAI')
+    script.
+      var socket = io();
+      function select() {
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+        if (checkboxes.length != 3) {
+        alert("You should select 3 musicians.");
+        return false;
+        }
+        var selection = Array.from(checkboxes).map((checkbox) => checkbox.value);
+        socket.emit('select', selection);
+      }
+      socket.on('recommendations', (recommendations) => {
+        const recommendations2 = ['item 1', 'item 2', 'item 3'];
+        const recommendations3 = recommendations;
+        const ul = document.getElementById('recommendationz');
+        recommendations3.forEach(item => {
+          const li = document.createElement('li');
+          li.textContent = item;
+          ul.appendChild(li);
+        });
+      });
+
+  body
+    .container
+      .select-musicians
+        h2 Select 3 musicians:
+        form
+          input#checkbox1(type='checkbox', name='musician', value='The Rolling Stones',checked)
+          label(for='checkbox1') The Rolling Stones
+          input#checkbox2(type='checkbox', name='musician', value='Madonna',checked)
+          label(for='checkbox2') Madonna
+          input#checkbox3(type='checkbox', name='musician', value='50 Cent',checked)
+          label(for='checkbox3') 50 Cent
+          input#checkbox4(type='checkbox', name='musician', value='Johnny Cash')
+          label(for='checkbox4') Johnny Cash
+          input#checkbox5(type='checkbox', name='musician', value='Miles Davis')
+          label(for='checkbox5') Miles Davis
+          input#checkbox6(type='checkbox', name='musician', value='Daft Punk')
+          label(for='checkbox6') Daft Punk
+          input#checkbox7(type='checkbox', name='musician', value='Bob Marley')
+          label(for='checkbox7') Bob Marley
+          input#checkbox8(type='checkbox', name='musician', value='Queen')
+          label(for='checkbox8') Queen
+          input#checkbox9(type='checkbox', name='musician', value='Ludwig van Beethoven')
+          label(for='checkbox9') Ludwig van Beethoven
+          input#checkbox10(type='checkbox', name='musician', value='The Rolling Stones')
+          label(for='checkbox10') The Rolling Stones
+          br
+          button(type='button', onclick='select()') Generate recommendations
+      .recommended-musicians
+        h2 Recommended musicians:
+        ul#recommendationz

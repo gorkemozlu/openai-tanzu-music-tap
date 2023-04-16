@@ -1,3 +1,3 @@
-![Alt text](images/image.gif?raw=true "Imag")
+![Alt text](images/gif.gif?raw=true "Imag")
 
 ## Welcome to Tanzu Music Recommendation ! 

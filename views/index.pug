@@ -31,6 +31,11 @@ html
         var selection = Array.from(checkboxes).map((checkbox) => checkbox.value);
         socket.emit('select', selection);
       }
+      function loadmore() {
+        var musicianBoxes = document.querySelectorAll('input[type="checkbox"]');
+        var musicianz = Array.from(musicianBoxes).map((checkbox) => checkbox.value);
+        socket.emit('loadmore', musicianz);
+      }
       socket.on('recommendations', (recommendations) => {
         const recommendations2 = ['item 1', 'item 2', 'item 3'];
         const recommendations3 = recommendations;
@@ -41,12 +46,31 @@ html
           ul.appendChild(li);
         });
       });
+      socket.on('musicianz', (musicianz) => {
+        const musicianz3 = musicianz;
+        const ul = document.getElementById('musicianz');
+        const loadMoreButton = ul.querySelector('button[type="button"]:first-of-type');
+        const generateButton = ul.querySelector('button[type="button"]:last-of-type');
+        musicianz3.forEach(item => {
+          const inp = document.createElement("INPUT");
+          var randomChar = (Math.random() + 1).toString(36).substring(7);
+          inp.setAttribute("id", randomChar);
+          inp.setAttribute("name", "musician");
+          inp.setAttribute("type", "checkbox");
+          inp.setAttribute("value", item);
+          const inl = document.createElement("label");
+          inl.innerHTML = item
+          inl.setAttribute("for", randomChar);
+          ul.insertBefore(inp, loadMoreButton);
+          ul.insertBefore(inl, loadMoreButton);
+        });
+      });
 
   body
     .container
       .select-musicians
         h2 Select 3 musicians:
-        form
+        form(id='musicianz')
           input#checkbox1(type='checkbox', name='musician', value='The Rolling Stones',checked)
           label(for='checkbox1') The Rolling Stones
           input#checkbox2(type='checkbox', name='musician', value='Madonna',checked)
@@ -67,6 +91,8 @@ html
           label(for='checkbox9') Ludwig van Beethoven
           input#checkbox10(type='checkbox', name='musician', value='The Rolling Stones')
           label(for='checkbox10') The Rolling Stones
+          br
+          button(type='button', onclick='loadmore()') Load more musicians
           br
           button(type='button', onclick='select()') Generate recommendations
       .recommended-musicians

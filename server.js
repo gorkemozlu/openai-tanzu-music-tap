@@ -25,6 +25,12 @@ io.on('connection', (socket) => {
     // send recommendations to all connected clients
     io.emit('recommendations', recommendations);
   });
+  socket.on('loadmore', async (musicianz) => {
+    // generate recommendations based on selection
+    let musician = await generateRecommendations(musicianz);
+    // send recommendations to all connected clients
+    io.emit('musicianz', musician);
+  });
 });
 
 async function generateRecommendations(selection) {
